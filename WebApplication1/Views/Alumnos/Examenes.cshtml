@@ -1,0 +1,48 @@
+﻿@model WebTest.ViewModels.Alumnos.ExamenesViewModel
+@{
+    var nombre = Model.Alumno.ApellidoNombre;
+    ViewBag.Title = $"Examenes de {nombre}";
+}
+<div class="container" id="AlumnosContainer">
+    <h4 class="text-center mt-5">
+        Examenes del Alumno @nombre
+    </h4>
+    @if (Model.Examenes.Any())
+    {
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Materia</th>
+                            <th scope="col">Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var examen in Model.Examenes.OrderByDescending(examen => examen.Fecha))
+                        {
+                            <tr>
+                                <td>@examen.Fecha.ToLongDateString()</td>
+                                <td>@examen.Materia.Nombre</td>
+                                <td>@examen.Nota.ToString("N1")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-primary">El alumno no ha realizado examenes...</div>
+    }
+    <div class="row my-5">
+        <div class="offset-5 col-2">
+            <a class="btn btn-dark form-control">
+                @Html.ActionLink("Lista Alumnos", "All", "Alumnos")                
+            </a>
+        </div>
+    </div>
+</div>
+

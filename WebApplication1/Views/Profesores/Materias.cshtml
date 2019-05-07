@@ -1,0 +1,51 @@
+﻿@model WebTest.ViewModels.Profesores.MateriasViewModel
+@{
+    var nombre = Model.Profesor.ApellidoNombre;
+    ViewBag.Title = $"Materias de {nombre}";
+}
+<div class="container" id="ProfesoresContainer">
+    <h4 class="text-center mt-5">
+        Materias del profesor @nombre
+    </h4>
+    @if (Model.Materias.Any())
+    {
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Alumnos</th>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Aula</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var materia in Model.Materias.OrderByDescending(materia => materia.Nombre))
+                        {
+                        <tr>
+                            <td>@materia.Nombre</td>
+                            <td>@materia.Alumnos.Count()</td>
+                            <td>@materia.Codigo.ToString()</td>
+                            <td>@materia.Aula.Ubicacion</td>
+                            <td><a href="@Url.Action("GenerarExamen", "Profesores", new { profesorDni = Model.Profesor.Dni, materiaCodigo = materia.Codigo })">Generar Examen</a></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-primary">El profesor no tiene materias asignadas...</div>
+    }
+    <div class="row my-5">
+        <div class="offset-5 col-2">
+            <a class="btn btn-dark form-control">
+                @Html.ActionLink("Lista Profesores", "All", "Profesores")
+            </a>
+        </div>
+    </div>
+</div>
+

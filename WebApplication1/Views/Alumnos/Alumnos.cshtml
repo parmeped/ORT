@@ -1,0 +1,50 @@
+﻿@model WebTest.ViewModels.Alumnos.AlumnosViewModel
+
+
+@{
+    ViewBag.Title = "All Alumnos";
+}
+<h2>@ViewBag.Title</h2>
+<h4>@Model.Message</h4>
+
+@if (Model.Alumnos.Any())
+{
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Apellido y Nombre</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Legajo</th>
+                    <th scope="col">Cantidad de Materias</th>
+                    <th scope="col">Cantidad de Exámenes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var alumno in Model.Alumnos.OrderBy(alumno => alumno.ApellidoNombre))
+                {
+                    <tr>
+                        <td>@alumno.ApellidoNombre</td>
+                        <td>@alumno.Dni</td>
+                        <td>@alumno.Legajo.verLegajo()</td>
+                        <td>@alumno.Materias.Count</td>
+                        <td>@alumno.Examenes.Count - <a href="@Url.Action("Examenes", "Alumnos", new { dni = alumno.Dni })">Ver</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row my-5">
+        <div class="col-2">
+            <a class="btn btn-dark form-control">
+                @Html.ActionLink("Nuevo Alumno", "NuevoAlumno", "Alumnos")
+            </a>
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <h3>@Model.Error</h3>
+}

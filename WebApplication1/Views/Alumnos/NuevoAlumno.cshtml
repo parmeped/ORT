@@ -1,0 +1,50 @@
+﻿@model WebTest.ViewModels.Alumnos.NuevoAlumnoViewModel
+
+@{
+    ViewBag.Title = "NuevoAlumno";
+}
+
+<div class="container">
+    <h4 class="text-center mt-5">
+        Nuevo Alumno
+    </h4>
+    <div class="row">
+        <div class="offset-3 col-6">
+            @using (Html.BeginForm("NuevoAlumno","Alumnos",FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="Dni">DNI</label>
+                    @Html.TextBoxFor(x => x.Dni, new { @class = "form-control", placeholder = "Ingrese DNI" })
+                    @Html.ValidationMessageFor(x => x.Dni, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="Nombre">Nombre</label>
+                    @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", placeholder = "Ingrese Nombre" })
+                    @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="Apellido">Apellido</label>
+                    @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control", placeholder = "Ingrese Apellido" })
+                    @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="FechaNacimiento">Legajo Tipo</label>
+                    @Html.TextBoxFor(x => x.LegajoTipo, new { @class = "form-control", placeholder = "Ingrese Tipo Legajo" })
+                    @Html.ValidationMessageFor(x => x.LegajoTipo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="FechaNacimiento">Legajo Numero</label>
+                    @Html.TextBoxFor(x => x.LegajoNumero, new { @class = "form-control", placeholder = "Ingrese Numero Legajo" })
+                    @Html.ValidationMessageFor(x => x.LegajoNumero, "", new { @class = "text-danger" })
+                </div>
+                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-dark">
+                    Confirmar
+                </button>
+                <a class="btn btn-dark form-control">
+                    @Html.ActionLink("Lista Alumnos", "All", "Alumnos")
+                </a>
+            }
+        </div>
+    </div>
+</div>

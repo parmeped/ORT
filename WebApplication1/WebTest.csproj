@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5B3AE68A-3CE2-498E-B38D-68890B17BBD5}</ProjectGuid>
+    <ProjectGuid>{25529332-1EA4-40AB-A686-2EA639244A28}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProyectTest</RootNamespace>
-    <AssemblyName>ProyectTest</AssemblyName>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -142,12 +142,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfesoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Home\AllAlumnosViewModel.cs" />
+    <Compile Include="ViewModels\Alumnos\AlumnosViewModel.cs" />
+    <Compile Include="ViewModels\Alumnos\ExamenesViewModel.cs" />
+    <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
+    <Compile Include="ViewModels\Profesores\MateriasViewModel.cs" />
+    <Compile Include="ViewModels\Profesores\ProfesoresViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -186,7 +192,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AllAlumnos.cshtml" />
+    <Content Include="Views\Alumnos\Alumnos.cshtml" />
+    <Content Include="Views\Alumnos\Examenes.cshtml" />
+    <Content Include="Views\Alumnos\NuevoAlumno.cshtml" />
+    <Content Include="Views\Profesores\Profesores.cshtml" />
+    <Content Include="Views\Profesores\Materias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,9 +236,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8913</DevelopmentServerPort>
+          <DevelopmentServerPort>26832</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8913/</IISUrl>
+          <IISUrl>http://localhost:26832/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
